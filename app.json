@@ -1,0 +1,12 @@
+{
+  "name": "quiz-survey-development",
+  "displayName": "quiz-survey-development",
+  "expo": {
+    "name": "quiz-survey-development",
+    "slug": "quiz-survey-development",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
