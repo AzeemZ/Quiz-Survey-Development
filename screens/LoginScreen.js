@@ -3,18 +3,10 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, KeyboardAvoidingView, View } from "react-native";
 import { Button, Input, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import LoadingIndicator from "./components/LoadingIndicator";
 import { useLogin } from "./hooks/useLogin";
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail, password, setPassword, isSignedIn, login] = useLogin(
-    navigation
-  );
-
-  if (isSignedIn === null) {
-    navigation.setOptions({ headerShown: false });
-    return <LoadingIndicator />;
-  }
+  const [email, setEmail, password, setPassword, login] = useLogin(navigation);
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.container}>
