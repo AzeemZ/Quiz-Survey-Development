@@ -14,7 +14,7 @@ import CustomListItem from "./components/CustomListItem";
 
 function HomeScreen({ navigation }) {
   const signOutUser = () => {
-    auth.signOut().then(() => navigation.replace("Login"));
+    auth.signOut();
   };
 
   useEffect(() => {}, []);
