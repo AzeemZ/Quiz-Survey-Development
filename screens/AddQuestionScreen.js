@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { KeyboardAvoidingView, StyleSheet, Platform } from "react-native";
+import { KeyboardAvoidingView, StyleSheet } from "react-native";
 import { ButtonGroup } from "react-native-elements";
 import AddSingleQuestion from "./components/AddSingleQuestion";
 import AddMultipleQuestion from "./components/AddMultipleQuestion";
@@ -37,10 +37,7 @@ function AddQuestionScreen({ navigation, route }) {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+    <KeyboardAvoidingView style={styles.container}>
       <StatusBar style="light" />
 
       <ButtonGroup

@@ -49,7 +49,7 @@ const AddSingleQuestion = ({ quizId, navigation }) => {
 
   const submit = async () => {
     await createQuestion();
-    navigation.navigate("Questions");
+    navigation.navigate("Questions", { id: quizId });
   };
 
   return (
