@@ -19,7 +19,7 @@ const RegisterScreen = ({ navigation }) => {
   ] = useRegister(navigation);
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView behavior="height" style={styles.container}>
       <StatusBar style="light" />
 
       <Text h3>
@@ -30,7 +30,7 @@ const RegisterScreen = ({ navigation }) => {
         Development
       </Text>
 
-      <KeyboardAvoidingView behavior="height" style={styles.subContainer}>
+      <View style={styles.subContainer}>
         <View style={styles.inputContainer}>
           <Input
             style={styles.inputStyle}
@@ -75,7 +75,7 @@ const RegisterScreen = ({ navigation }) => {
           onPress={register}
           raised
         />
-      </KeyboardAvoidingView>
+      </View>
 
       <View style={{ height: 80 }} />
     </KeyboardAvoidingView>
@@ -88,11 +88,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "space-between",
     padding: 10,
     backgroundColor: "#fff",
   },
   subContainer: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -38,6 +38,7 @@ const LoginScreen = ({ navigation }) => {
             type="password"
             value={password}
             onChangeText={setPassword}
+            onSubmitEditing={login}
             secureTextEntry
           />
         </View>

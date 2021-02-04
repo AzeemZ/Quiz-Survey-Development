@@ -3,10 +3,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth } from "./firebase";
 
+import LoadingIndicator from "./screens/components/LoadingIndicator";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import HomeScreen from "./screens/HomeScreen";
-import LoadingIndicator from "./screens/components/LoadingIndicator";
+import AddQuizScreen from "./screens/AddQuizScreen";
+import AddQuestionScreen from "./screens/AddQuestionScreen";
+import QuestionsScreen from "./screens/QuestionsScreen";
 
 const Stack = createStackNavigator();
 
@@ -34,14 +37,16 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="LoginScreen"
-        screenOptions={globalScreenOptions}
-      >
+      <Stack.Navigator screenOptions={globalScreenOptions}>
         {isSignedIn === null ? (
           <Stack.Screen name="Loading..." component={LoadingIndicator} />
         ) : isSignedIn ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="AddQuiz" component={AddQuizScreen} />
+            <Stack.Screen name="Questions" component={QuestionsScreen} />
+            <Stack.Screen name="AddQuestion" component={AddQuestionScreen} />
+          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />

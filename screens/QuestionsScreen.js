@@ -4,20 +4,20 @@ import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import { Text, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/AntDesign";
 import CustomListItem from "./components/CustomListItem";
-import { useHome } from "./hooks/useHome";
+import { useQuestions } from "./hooks/useQuestions";
 import LoadingIndicator from "./components/LoadingIndicator";
 
-function HomeScreen({ navigation, route }) {
-  const [quizzes] = useHome(navigation);
+function QuestionsScreen({ navigation, route }) {
+  const [questions] = useQuestions(route);
 
-  if (quizzes === null) {
+  if (questions === null) {
     return <LoadingIndicator />;
   }
 
-  if (!quizzes) {
+  if (!questions) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>No quiz has been created yet.</Text>
+        <Text>No questions has been created yet.</Text>
 
         <Button
           buttonStyle={{ height: 70, width: 70 }}
@@ -44,11 +44,11 @@ function HomeScreen({ navigation, route }) {
       </Text>
 
       <ScrollView style={styles.list}>
-        {quizzes.map(({ id, data: { title, description } }) => (
+        {questions.map(({ id, data: { question, type, points, timer } }) => (
           <CustomListItem
             key={id}
-            title={title}
-            subtitle={description}
+            title={`${question} - ${points} Points`}
+            subtitle={`${type} Choice Question - ${timer} Secs`}
             redirect={() => navigation.navigate("Questions", { id })}
           />
         ))}
@@ -58,13 +58,15 @@ function HomeScreen({ navigation, route }) {
         buttonStyle={{ height: 70, width: 70 }}
         containerStyle={styles.button}
         icon={<Icon name="plus" size={30} color="white" />}
-        onPress={() => navigation.navigate("AddQuiz")}
+        onPress={() =>
+          navigation.navigate("AddQuestion", { quizId: route.params.id })
+        }
       />
     </SafeAreaView>
   );
 }
 
-export default HomeScreen;
+export default QuestionsScreen;
 
 const styles = StyleSheet.create({
   container: {
